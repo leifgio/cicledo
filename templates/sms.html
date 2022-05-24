@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} SMS Gateway {% endblock %}
+
+{% block content %}
+<h1> SMS Gateway </h1>
+
+<!-- Contact Group -->
+<h5> Contact Groups </h5>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+    Contact Group
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Monthly </a></li>
+    <li><a class="dropdown-item" href="#">Irregular</a></li>
+  </ul>
+</div>
+
+<!-- Mobile Numbers-->
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Mobile Numbers</label>
+</div>
+
+<!-- Message -->
+<div class="form-floating">
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Message</label>
+</div>
+
+<!-- Send Button -->
+<button type="button" class="btn btn-primary">Send SMS</button>
+
+<!-- Short codes -->
+<h5> Short Codes </h5>
+<p> [[contact.name]], [[contact.number]], [[date.now]], [[balance]] </p>
+
+{% endblock %}
