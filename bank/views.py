@@ -13,8 +13,8 @@ def payment(request):
 def changePassword(request):
     return render(request, "changepassword.html")
 
-def loginDebtor(request):
-    return render(request, "login-debtor.html")
+def debtor(request):
+    return render(request, "debtors.html")
 
 def login(request):
     return render(request, "login.html")
