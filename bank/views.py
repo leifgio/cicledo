@@ -16,5 +16,5 @@ def changePassword(request):
 def loginDebtor(request):
     return render(request, "login-debtor.html")
 
-def loginEmployee(request):
-    return render(request, "login-employee.html")
+def login(request):
+    return render(request, "login.html")

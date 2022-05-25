@@ -1,8 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block mymessage %}
+{% block title %} Dashboard {% endblock %}
 
+{% block content %}
 
+<h1>Dashboard</h1>
+
+<!-- Search Bar  -->
+<div class="input-group mb-3">
+  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort by</button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Alphabetical</a></li>
+    <li><a class="dropdown-item" href="#">Ascending Loan</a></li>
+    <li><a class="dropdown-item" href="#">Date</a></li>
+    <li><a class="dropdown-item" href="#">Payment Status</a></li>
+  </ul>
+ <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+</div>
+
+<!-- Table -->
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Loan ID</th>
+      <th scope="col">Contact Info</th>
+      <th scope="col">Monthly Due</th>
+      <th scope="col">Status</th>
+      <th scope="col">Remaining Months</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Juan Dela Cruz</tj>
+      <td>0001</td>
+      <td>09092302092</td>
+      <td>₱ 1,200</td>
+      <td>Paid</td>
+      <td>6 Months</td>
+    </tr>
+    <tr>
+      <td>Juan Dela Torre</td>
+      <td>0002</td>
+      <td>09030609281</td>
+      <td>₱ 1,231</td>
+      <td>Paid</td>
+      <td>10 Months</td>
+    </tr>
+    <tr>
+      <td>Juan Dela Vega</tj>
+      <td>0003</td>
+      <td>09203089622</td>
+      <td>₱ 1,128</td>
+      <td>Unpaid</td>
+      <td>3 Months</td>
+    </tr>
+  </tbody>
+</table> 
+
+<!-- CRUD -->
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-primary">Add</button>
+  <button type="button" class="btn btn-danger">Delete</button>
+  <button type="button" class="btn btn-success">Edit</button>
+</div>
 
 {% endblock %}
