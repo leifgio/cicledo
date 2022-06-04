@@ -21,21 +21,22 @@
       </div>
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <form>
+          {% csrf_token %}
 
           <!-- username input -->
           <div class="form-outline mb-4">
             <input type="text" class="form-control form-control-lg" placeholder="Username"/>
-            <label class="form-label" for="form1Example13">Username</label>
+            <label class="form-label" for="username">Username</label>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-4">
             <input type="password"  class="form-control form-control-lg" placeholder="Password"/>
-            <label class="form-label" for="form1Example23">Password</label>
+            <label class="form-label" for="password">Password</label>
           </div>
 
           <!-- Login button -->
-          <a href="/dashboard"  class="btn btn-primary">Sign in</a>
+          <button type="submit" class="btn btn-primary">Sign in</button>
           <!-- Debtors info button -->
           <a href="/debtors" class="btn btn-outline-primary">Debtors Info</a>
 
