@@ -24,46 +24,25 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Loan ID</th>
+      <th scope="col">Email</th>
       <th scope="col">Contact Info</th>
-      <th scope="col">Monthly Due</th>
-      <th scope="col">Status</th>
-      <th scope="col">Remaining Months</th>
+      <th scope="col">Address</th>
     </tr>
   </thead>
   <tbody>
+    {% for x in debtor %}
     <tr>
-      <td>Juan Dela Cruz</tj>
-      <td>0001</td>
-      <td>09092302092</td>
-      <td>₱ 1,200</td>
-      <td>Paid</td>
-      <td>6 Months</td>
+      <td> <a href="#">{{x.first_name }} {{x.last_name }}</a></td>
+      <td>{{x.email }}</td>
+      <td>{{x.contact }}</td>
+      <td>{{x.address }}</td>
     </tr>
-    <tr>
-      <td>Juan Dela Torre</td>
-      <td>0002</td>
-      <td>09030609281</td>
-      <td>₱ 1,231</td>
-      <td>Paid</td>
-      <td>10 Months</td>
-    </tr>
-    <tr>
-      <td>Juan Dela Vega</tj>
-      <td>0003</td>
-      <td>09203089622</td>
-      <td>₱ 1,128</td>
-      <td>Unpaid</td>
-      <td>3 Months</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table> 
 
 <!-- CRUD -->
-<div class="btn-group" role="group">
-  <button type="button" class="btn btn-primary">Add</button>
-  <button type="button" class="btn btn-danger">Delete</button>
-  <button type="button" class="btn btn-success">Edit</button>
-</div>
+<button type="button" class="btn btn-primary">Create Debtor</button>
+<button type="button" class="btn btn-primary">Create Loan</button>
 
 {% endblock %}

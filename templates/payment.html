@@ -6,40 +6,39 @@
  <table class="table">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Payment</th>
-      <th scope="col">Month</th>
+      <th scope="col">Loan Id</th>
+      <th scope="col">Payment Number</th>
+      <th scope="col">Amount</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">0001</th>
-      <td>Mark</td>
-      <td>₱ 1,200.00</td>
-      <td><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    January
-  </button></td>
-    </tr>
-    <tr>
-      <th scope="row">0002</th>
-      <td>Jacob</td>
-      <td>₱ 1,200.00</td>
-      <td><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-   February 
-  </button></td>
-    </tr>
-    <tr>
-      <th scope="row">0003</th>
-      <td>Larry</td>
-      <td>₱ 1,200.00</td>
-      <td><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-   January 
-  </button></td>
+      <td>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+         Loan ID Number 
+        </button>
+        <ul class="dropdown-menu">
+        {% for x in loan %}
+        <li><a class="dropdown-item" href="#"> {{ x.id }}</a></li>
+        {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">1st</button>
+      </td>
+  <td> <input type="text"> </td>
     </tr>
   </tbody>
 </table> 
 
+<hr>
+
+<button type="button" class="btn btn-primary">Submit Payment</button>
+<button type="button" class="btn btn-primary">Print Receipt</button>
 <button type="button" class="btn btn-primary">Print Payment Form</button>
-<button type="button" class="btn btn-secondary">Print Receipt</button>
+
+<hr>
+
+ <h1> Previous Payments </h1>
+
 {% endblock %}

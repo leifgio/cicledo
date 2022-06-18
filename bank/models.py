@@ -31,9 +31,10 @@ class Loan(models.Model):
         return '%s,%s' % (self.loan_type, self.debtor)
 
 class Payment(models.Model):
+    debtor_id = models.ForeignKey(Debtor, on_delete=models.CASCADE)
     loan_id = models.ForeignKey(Loan, on_delete=models.CASCADE)
-    month = models.DateField()
+    month_number= models.IntegerField()
     amount = models.IntegerField()
 
     def __str__(self):
-        return '%s %s' % (self.month, self.loan_id)
+        return '%s %s' % (self.month_number, self.loan_id)

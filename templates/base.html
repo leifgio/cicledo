@@ -49,10 +49,10 @@
  
 <body>
 	<div class="sidenav">
-		<a href="/dashboard">dashboard</a>
-		<a href="/sms">sms</a>
-		<a href="/payment">payment</a>
-		<a href="/">logout</a>
+    <a href="{% url 'dashboard' %}">dashboard</a>
+    <a href="{% url 'sms' %}">sms</a>
+    <a href="{% url 'payment' %}">payment</a>
+    <a href="{% url 'logout' %}">logout</a>
 	</div>
  
 	<div id="content" name="content" class="main">
