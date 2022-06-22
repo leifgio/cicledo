@@ -3,6 +3,8 @@ from .models import Debtor, Loan, Payment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+from bank.forms import CreateDebtor,CreateLoan
+
 @login_required(login_url='login')
 def sms(request):
     return render(request, "sms.html")
@@ -44,3 +46,23 @@ def loginPage(request):
 def logoutPage(request):
     logout(request)
     return redirect('login')
+
+@login_required(login_url='login')
+def createDebtor(request):
+    form = CreateDebtor()
+    if request.method == 'POST':
+        debtor = CreateDebtor(request.POST)
+        if debtor.is_valid():
+            debtor.save()
+    value = {'form':form}
+    return render(request, 'create-debtor.html',value)
+
+@login_required(login_url='login')
+def createLoan(request):
+    form = CreateLoan()
+    if request.method == 'POST':
+        loan = CreateLoan(request.POST)
+        if loan.is_valid():
+            loan.save()
+    value = {'form':form}
+    return render(request, 'create-debtor.html',value)

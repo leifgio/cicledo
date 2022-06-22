@@ -11,5 +11,8 @@ urlpatterns = [
     path('<int:pk>/', views.dummy, name='user'),
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutPage, name='logout'),
+
+    path('createDebtor/', views.createDebtor, name='create-debtor'),
+    path('createLoan/', views.createLoan, name='create-loan'),
 ]
 
