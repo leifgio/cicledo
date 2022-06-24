@@ -3,7 +3,7 @@ from .models import Debtor, Loan, Payment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-from bank.forms import CreateDebtor,CreateLoan
+from bank.forms import CreateDebtor,CreateLoan, CreatePayment
 
 @login_required(login_url='login')
 def sms(request):
@@ -66,3 +66,13 @@ def createLoan(request):
             loan.save()
     value = {'form':form}
     return render(request, 'create-debtor.html',value)
+
+@login_required(login_url='login')
+def createPayment(request):
+    form = CreatePayment()
+    if request.method == 'POST':
+        payment = CreateLoan(request.POST)
+        if payment.is_valid():
+            payment.save()
+    value = {'form':form}
+    return render(request, 'create-payment.html',value)
