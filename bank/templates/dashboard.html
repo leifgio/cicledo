@@ -32,7 +32,7 @@
   <tbody>
     {% for x in debtor %}
     <tr>
-      <td> <a href="#">{{x.first_name }} {{x.last_name }}</a></td>
+      <td><a href="{% url 'detail' x.id %}">{{ x.first_name }} {{x.last_name}}</a></td>
       <td>{{x.email }}</td>
       <td>{{x.contact }}</td>
       <td>{{x.address }}</td>

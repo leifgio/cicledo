@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Debtor, Loan, Payment
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views import generic
 
 from bank.forms import CreateDebtor,CreateLoan, CreatePayment
 
@@ -76,3 +77,7 @@ def createPayment(request):
             payment.save()
     value = {'form':form}
     return render(request, 'create-payment.html',value)
+
+class DetailView(generic.DetailView):
+    model = Debtor
+    template_name = 'detail.html'

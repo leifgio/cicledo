@@ -22,7 +22,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     # my apps
-    'bank',
+    'bank.apps.BankConfig',
 
     # django apps
     'django.contrib.admin',

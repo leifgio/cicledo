@@ -14,5 +14,7 @@ urlpatterns = [
 
     path('createDebtor/', views.createDebtor, name='create-debtor'),
     path('createLoan/', views.createLoan, name='create-loan'),
+
+    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
 ]
 
