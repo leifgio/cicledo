@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Debtor Info {% endblock %}
+
+{% block content %}
+<h2>{{ debtor.first_name }} {{ debtor.last_name}} Loan Information</h2>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Loan Id</th>
+      <th scope="col">Debtor name</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Payment Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loan in debtor.loan_set.all %}
+    <tr>
+        <td>{{ loan }}</td>
+        <td>{{ debtor.first_name }} {{ debtor.last_name }}</td>
+        <td>{{ loan.amount }}</td>
+        <td>{{ loan.payment_status }}</td>
+      <td> 
+        <a href="{% url 'bank:update-loan' loan.id %}" class="btn btn-primary">Update</a>
+      </td>
+      <td> 
+        <a href="{% url 'bank:delete-loan' loan.id %}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table> 
+
+<h2>Amount Paid</h2>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Month Number</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for payment in debtor.payment_set.all %}
+    <tr>
+        <td>{{ payment.month_number }}</td>
+        <td>{{ payment.amount }}</td>
+        
+    </tr>
+{% endfor %}
+  </tbody>
+</table> 
+{% endblock %}
+

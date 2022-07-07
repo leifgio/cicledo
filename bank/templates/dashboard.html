@@ -32,17 +32,23 @@
   <tbody>
     {% for x in debtor %}
     <tr>
-      <td><a href="{% url 'detail' x.id %}">{{ x.first_name }} {{x.last_name}}</a></td>
+      <td><a href="{{x.id}}">{{ x.first_name }} {{x.last_name}}</a></td>
       <td>{{x.email }}</td>
       <td>{{x.contact }}</td>
       <td>{{x.address }}</td>
+      <td> 
+        <a href="{% url 'bank:update-debtor' x.id %}" class="btn btn-primary">Update</a>
+      </td>
+      <td> 
+        <a href="{% url 'bank:delete-debtor' x.id %}" class="btn btn-danger">Delete</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
 </table> 
 
 <!-- CRUD -->
-<a href="{% url 'create-debtor' %}" class="btn btn-primary">Create Debtor</a>
-<a href="{% url 'create-loan' %}" class="btn btn-primary">Create Loan</a>
+<a href="{% url 'bank:create-debtor' %}" class="btn btn-primary">Create Debtor</a>
+<a href="{% url 'bank:create-loan' %}" class="btn btn-primary">Create Loan</a>
 
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils.timezone import now
+import sys, requests, urllib
 
 class Debtor(models.Model):
     first_name = models.CharField(max_length=30)
@@ -12,19 +13,35 @@ class Debtor(models.Model):
     def __str__(self):
         return '%s-%s' % (self.pk, self.first_name)
 
+    def save(self, *args, **kwargs):
+        apikey = '5b99abb653c56d436a0286df4b5020ad'
+        number = f'{self.contact}'
+        message = f'hi {self.first_name} you are now registered to CICLEDO loans'
+
+        params = (
+            ('apikey', apikey),
+            ('message', message),
+            ('number', number)
+        )
+
+        path = 'https://semaphore.co/api/v4/messages?' + urllib.parse.urlencode(params)
+
+        #requests.post(path)
+        return super().save(*args, **kwargs)
+
 class Loan(models.Model):
     LOAN_TYPES = (
         ('12 months to pay', '12 months to pay'),
         ('24 months to pay', '24 months to pay'),
         )
     STATUS_TYPES = (
-        ('P', 'Paid'),
-        ('U', 'Unpaid'),
+        ('Paid', 'Paid'),
+        ('Unpaid', 'Unpaid'),
         )
     debtor = models.ForeignKey(Debtor, on_delete=models.CASCADE)
     loan_type = models.CharField(default="24 months to pay", max_length=24,choices=LOAN_TYPES)
-    amount = models.IntegerField()
-    payment_status =  models.CharField(default="U", max_length=2, choices=STATUS_TYPES)
+    amount = models.PositiveIntegerField()
+    payment_status =  models.CharField(default="Unpaid", max_length=24, choices=STATUS_TYPES)
     date_created = models.DateField(default=now, editable=False)
 
     def __str__(self):
@@ -38,3 +55,7 @@ class Payment(models.Model):
 
     def __str__(self):
         return '%s %s' % (self.month_number, self.loan_id)
+
+    def sum_payments(self):
+        pass
+
