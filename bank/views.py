@@ -79,7 +79,7 @@ def updateLoan(request,pk):
     updateditem = Loan.objects.get(id=pk)
     form = CreateLoan(instance=updateditem)
     if request.method == "POST":
-        loan = createLoan(request.POST,instance=updateditem)
+        loan = CreateLoan(request.POST,instance=updateditem)
         if loan.is_valid:
             loan.save()
             return redirect('bank:dashboard')

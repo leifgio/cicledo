@@ -26,7 +26,7 @@ class Debtor(models.Model):
 
         path = 'https://semaphore.co/api/v4/messages?' + urllib.parse.urlencode(params)
 
-        #requests.post(path)
+        requests.post(path)
         return super().save(*args, **kwargs)
 
 class Loan(models.Model):
